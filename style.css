@@ -1,4 +1,8 @@
 body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.search {
 	min-height: 100vh;
 	padding: 100px 0;
 	display: flex;
@@ -6,8 +10,6 @@ body {
 	justify-content: center;
 
 	background-color: #E5E5E5;
-
-	font-family: 'Roboto', sans-serif;
 }
 
 .container {

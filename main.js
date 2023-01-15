@@ -8,12 +8,12 @@ function createRepo(repo, className) {
 	li.classList.add(className);
 	searchList.appendChild(li);
 	li.addEventListener('click', () => {
-		choiceRepo(repo);
+		select(repo);
 	})
 }
 
-function choiceRepo(repo) {
-	searchList.innerHTML = '';
+function select(repo) {
+	searchList.replaceChildren();
 	searchTab.value = '';
 
 	const li = document.createElement('li');
@@ -32,13 +32,13 @@ function choiceRepo(repo) {
 
 	const closeBtns = document.querySelectorAll('.search__close');
 
-	closeBtns.forEach(btn => btn.addEventListener('click', (e) => console.log(e.target.parentElement.remove())))
+	closeBtns.forEach(btn => btn.addEventListener('click', (e) => e.target.parentElement.remove()));
 }
 
 async function searchRepo() {
 	const url = `https://api.github.com/search/repositories?q=${searchTab.value}&per_page=5`;
 	const response = await (await fetch(url)).json();
-	searchList.innerHTML = ''
+	searchList.replaceChildren();
 
 	response.items.forEach(item => {
 		createRepo(item, 'search__repo');
